@@ -4,7 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var React = _interopDefault(require('react'));
+var React = require('react');
+var React__default = _interopDefault(React);
 
 const cssObjectToString = (className, css, customCSS) => {
     let cssString = "" + customCSS;
@@ -66,12 +67,17 @@ const generateRandomClassname = (tagname) => {
 
 const StyledElement = (HTMLTag, css, customCSS) => {
     return props => {
-        console.log(css);
         const className = generateRandomClassname(HTMLTag);
-        const styleElement = document.createElement("style");
-        styleElement.innerText = cssObjectToString(className, css, customCSS || "");
-        document.head.appendChild(styleElement);
-        return React.createElement(HTMLTag, { className: className }, props.children);
+        let styleTag;
+        React.useEffect(() => {
+            styleTag = document.createElement("style");
+            styleTag.innerText = cssObjectToString(className, css, customCSS || "");
+            document.head.appendChild(styleTag);
+            return () => {
+                styleTag.remove();
+            };
+        }, []);
+        return React__default.createElement(HTMLTag, { className: className }, props.children);
     };
 };
 

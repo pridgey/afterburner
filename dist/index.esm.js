@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const cssObjectToString = (className, css, customCSS) => {
     let cssString = "" + customCSS;
@@ -60,11 +60,16 @@ const generateRandomClassname = (tagname) => {
 
 const StyledElement = (HTMLTag, css, customCSS) => {
     return props => {
-        console.log(css);
         const className = generateRandomClassname(HTMLTag);
-        const styleElement = document.createElement("style");
-        styleElement.innerText = cssObjectToString(className, css, customCSS || "");
-        document.head.appendChild(styleElement);
+        let styleTag;
+        useEffect(() => {
+            styleTag = document.createElement("style");
+            styleTag.innerText = cssObjectToString(className, css, customCSS || "");
+            document.head.appendChild(styleTag);
+            return () => {
+                styleTag.remove();
+            };
+        }, []);
         return React.createElement(HTMLTag, { className: className }, props.children);
     };
 };

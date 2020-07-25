@@ -1,5 +1,4 @@
-import React, { CSSProperties } from "react";
-import ReactDOM from "react-dom";
+import React, { CSSProperties, useEffect } from "react";
 import { Tagname, StyleCollection } from "./Types";
 import { cssObjectToString, generateRandomClassname } from "./Utilities";
 
@@ -11,9 +10,17 @@ export const StyledElement = (
   return props => {
     const className: string = generateRandomClassname(HTMLTag);
 
-    const styleElement = document.createElement("style");
-    styleElement.innerText = cssObjectToString(className, css, customCSS || ""); // This appends a new style tag every render, which is... not so good
-    document.head.appendChild(styleElement);
+    let styleTag: HTMLElement;
+
+    useEffect(() => {
+      styleTag = document.createElement("style");
+      styleTag.innerText = cssObjectToString(className, css, customCSS || "");
+      document.head.appendChild(styleTag);
+      return () => {
+        styleTag.remove();
+      };
+    }, []);
+
     return React.createElement(
       HTMLTag,
       { className: className },
