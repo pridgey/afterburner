@@ -2,7 +2,7 @@ import React, { CSSProperties, useEffect } from "react";
 import { Tagname, StyleCollection } from "./Types";
 import { cssObjectToString, generateRandomClassname } from "./Utilities";
 
-const StyledElement = (
+export const StyledElement = (
   HTMLTag: Tagname,
   css: StyleCollection | CSSProperties,
   customCSS?: string,
@@ -29,5 +29,3 @@ const StyledElement = (
     );
   };
 };
-
-export default StyledElement;

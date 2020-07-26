@@ -1,4 +1,4 @@
-# Afterburner ☄️🔥
+# Afterburner ☄️
 
 [![GitHub issues](https://img.shields.io/github/issues/pridgey/afterburner?label=Broken%20Stuff&style=flat-square)](https://github.com/pridgey/afterburner/issues)
 
@@ -7,13 +7,56 @@ Afterburner provides developers a library to create styled react components. Bec
 To get started simply import StyledElement from Afterburner.
 
 ```
-import StyledElement from "afterburner";
+import { StyledElement } from "afterburner";
 
 const StyledButton = StyledElement("button", {
     backgroundColor: "#ffeeff",
-    color: "#010101,
+    color: "#010101",
     border: "1px solid #010101",
     borderRadius: "6px",
     fontFamily: "sans-serif",
 });
+
+return <StyledButton>I'm a button!</StyledButton>
+```
+
+Afterburner also allows the ability to specify CSS selectors such as `:hover` and `:focus`.
+
+```
+import { StyledElement } from "afterburner";
+
+const StyledButton = StyledElement("button", {
+    standard: {
+        backgroundColor: "#ffeeff",
+        color: "#010101",
+        border: "1px solid #010101",
+        borderRadius: "6px",
+        fontFamily: "sans-serif",
+    },
+    hover: {
+        color: "#222222",
+        border: "1px solid #222222",
+    },
+    focus: {
+        border: "1px solid #222222",
+    }
+});
+
+return <StyledButton>I'm a button!</StyledButton>
+```
+
+Finally Afterburner allows for completely custom CSS as well:
+
+```
+import { StyledElement } from "afterburner";
+
+const StyledButton = StyledElement("button", {
+    backgroundColor: "#ffeeff",
+    color: "#010101",
+    border: "1px solid #010101",
+    borderRadius: "6px",
+    fontFamily: "sans-serif",
+}, `.customClass { color: blue; font-family: cursive; }`);
+
+return <StyledButton>I'm a button!</StyledButton>
 ```
