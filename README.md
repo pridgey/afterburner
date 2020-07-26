@@ -6,57 +6,61 @@ Afterburner provides developers a library to create styled react components. Bec
 
 To get started simply import StyledElement from Afterburner.
 
-```
+```jsx
 import { StyledElement } from "afterburner";
 
 const StyledButton = StyledElement("button", {
-    backgroundColor: "#ffeeff",
-    color: "#010101",
-    border: "1px solid #010101",
-    borderRadius: "6px",
-    fontFamily: "sans-serif",
+  backgroundColor: "#ffeeff",
+  color: "#010101",
+  border: "1px solid #010101",
+  borderRadius: "6px",
+  fontFamily: "sans-serif"
 });
 
-return <StyledButton>I'm a button!</StyledButton>
+return <StyledButton>I'm a button!</StyledButton>;
 ```
 
 Afterburner also allows the ability to specify CSS selectors such as `:hover` and `:focus`.
 
-```
+```jsx
 import { StyledElement } from "afterburner";
 
 const StyledButton = StyledElement("button", {
-    standard: {
-        backgroundColor: "#ffeeff",
-        color: "#010101",
-        border: "1px solid #010101",
-        borderRadius: "6px",
-        fontFamily: "sans-serif",
-    },
-    hover: {
-        color: "#222222",
-        border: "1px solid #222222",
-    },
-    focus: {
-        border: "1px solid #222222",
-    }
-});
-
-return <StyledButton>I'm a button!</StyledButton>
-```
-
-Finally Afterburner allows for completely custom CSS as well:
-
-```
-import { StyledElement } from "afterburner";
-
-const StyledButton = StyledElement("button", {
+  standard: {
     backgroundColor: "#ffeeff",
     color: "#010101",
     border: "1px solid #010101",
     borderRadius: "6px",
-    fontFamily: "sans-serif",
-}, `.customClass { color: blue; font-family: cursive; }`);
+    fontFamily: "sans-serif"
+  },
+  hover: {
+    color: "#222222",
+    border: "1px solid #222222"
+  },
+  focus: {
+    border: "1px solid #222222"
+  }
+});
 
-return <StyledButton>I'm a button!</StyledButton>
+return <StyledButton>I'm a button!</StyledButton>;
+```
+
+Finally Afterburner allows for completely custom CSS as well:
+
+```jsx
+import { StyledElement } from "afterburner";
+
+const StyledButton = StyledElement(
+  "button",
+  {
+    backgroundColor: "#ffeeff",
+    color: "#010101",
+    border: "1px solid #010101",
+    borderRadius: "6px",
+    fontFamily: "sans-serif"
+  },
+  `.customClass { color: blue; font-family: cursive; }`
+);
+
+return <StyledButton>I'm a button!</StyledButton>;
 ```
