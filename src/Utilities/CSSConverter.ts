@@ -44,9 +44,11 @@ const cssPropertiesToString = (css: CSSProperties) => {
 const cssKeyToProperString = (key: string) => {
   // Split the key by uppercase characters
   // So a key like backgroundColor becomes ["background", "Color"]
-  const keyParts: string[] = key.match(/([A-Z]?[^A-Z]*)/g)?.slice(0, -1) || [];
+  const keyParts: string[] | undefined = key
+    .match(/([A-Z]?[^A-Z]*)/g)
+    ?.slice(0, -1);
 
-  if (keyParts.length > 1) {
+  if (!!keyParts && keyParts?.length > 1) {
     // Grab the first part of the key
     const firstPart = keyParts[0].toLowerCase();
     if (
@@ -65,6 +67,6 @@ const cssKeyToProperString = (key: string) => {
     // We either have just one string, like ["display"]
     // Or we have nothing.
     // Either way, return what's here
-    return keyParts.join("").toLowerCase();
+    return keyParts?.join("").toLowerCase() ?? "";
   }
 };

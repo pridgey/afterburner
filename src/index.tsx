@@ -5,10 +5,11 @@ import { cssObjectToString, generateRandomClassname } from "./Utilities";
 export const StyledElement = (
   HTMLTag: Tagname,
   css: StyleCollection | CSSProperties,
-  customCSS?: string
+  customCSS?: string,
+  classOverride?: string
 ): React.FC => {
   return props => {
-    const className: string = generateRandomClassname(HTMLTag);
+    const className: string = generateRandomClassname(HTMLTag, classOverride);
 
     let styleTag: HTMLElement;
 
