@@ -9,6 +9,7 @@ To get started simply import StyledElement from Afterburner.
 ```jsx
 import { StyledElement } from "afterburner";
 
+// StyledElement(tagName, CSSProperties)
 const StyledButton = StyledElement("button", {
   backgroundColor: "#ffeeff",
   color: "#010101",
@@ -25,6 +26,7 @@ Afterburner also allows the ability to specify CSS selectors such as `:hover` an
 ```jsx
 import { StyledElement } from "afterburner";
 
+// StyledElement(tagName, StyleCollection)
 const StyledButton = StyledElement("button", {
   standard: {
     backgroundColor: "#ffeeff",
@@ -50,6 +52,7 @@ Finally Afterburner allows for completely custom CSS as well:
 ```jsx
 import { StyledElement } from "afterburner";
 
+// StyledElement(tagName, CSSProperties, customCSS)
 const StyledButton = StyledElement(
   "button",
   {
