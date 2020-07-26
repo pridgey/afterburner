@@ -6,7 +6,12 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/pridgey"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:pridgey/afterburner.git",
+    "directory": "@pridgey/afterburner"
   },
   "scripts": {
     "build": "rollup -c",
