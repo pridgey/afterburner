@@ -4,9 +4,6 @@
   "description": "A style library to produce stylized, containerized html elements",
   "main": "src/index.tsx",
   "types": "src/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/pridgey"
-  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:pridgey/afterburner.git",
