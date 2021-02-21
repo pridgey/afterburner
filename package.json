@@ -2,9 +2,8 @@
   "name": "@pridgey/afterburner",
   "version": "1.0.1",
   "description": "A style library to produce stylized, containerized html elements",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.js",
+  "main": "src/index.tsx",
+  "types": "src/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/pridgey"
   },
@@ -14,7 +13,7 @@
     "directory": "@pridgey/afterburner"
   },
   "scripts": {
-    "build": "rollup -c",
+    "types": "tsc",
     "test": "jest"
   },
   "author": "Taylor J Pridgen",

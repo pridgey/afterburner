@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "./dist",
+    "emitDeclarationOnly": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
@@ -9,7 +9,6 @@
     "strictNullChecks": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "outDir": "./dist",
     "target": "ESNext",
     "esModuleInterop": true,
     "jsx": "react",
