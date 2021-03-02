@@ -1,16 +1,16 @@
 {
   "name": "@pridgey/afterburner",
-  "version": "1.1.0",
+  "version": "1.1.6",
   "description": "A style library to produce stylized, containerized html elements",
-  "main": "src/index.tsx",
-  "types": "src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:pridgey/afterburner.git",
     "directory": "@pridgey/afterburner"
   },
   "scripts": {
-    "types": "tsc",
+    "build": "tsc",
     "test": "jest"
   },
   "author": "Taylor J Pridgen",

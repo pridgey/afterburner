@@ -1,5 +1,13 @@
-import React, { CSSProperties, useEffect, ReactNode } from "react";
-import { Tagname, StyleCollection } from "./Types";
+import React, {
+  CSSProperties,
+  useEffect,
+  ReactNode,
+  createElement,
+  ReactHTML,
+  HTMLAttributes,
+  DetailedHTMLProps,
+} from "react";
+import { StyleCollection } from "./Types";
 import {
   cssObjectToString,
   generateRandomClassname,
@@ -7,12 +15,14 @@ import {
 } from "./Utilities";
 
 export const StyledElement = (
-  HTMLTag: Tagname,
+  HTMLTag: keyof ReactHTML,
   css: StyleCollection | CSSProperties,
   customCSS?: string,
   classOverride?: string
-): React.FC => {
-  return (props) => {
+): React.FunctionComponent<
+  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+> => {
+  return (props: any) => {
     const className: string = generateRandomClassname(HTMLTag, classOverride);
 
     let styleTag: HTMLElement;
@@ -26,9 +36,9 @@ export const StyledElement = (
       };
     }, []);
 
-    return React.createElement(
+    return createElement(
       HTMLTag,
-      { className: className },
+      { className: className, ...props },
       props.children
     );
   };

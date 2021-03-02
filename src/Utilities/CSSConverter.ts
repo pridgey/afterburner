@@ -102,7 +102,7 @@ const checkCSSValueForVariable = (value: string) => {
         const numbers = cssVarValue
           .split("(")[1]
           .replace(")", "")
-          .replaceAll("%", "")
+          .replace(/%/g, "")
           .split(",");
 
         return `hsl(${numbers[0]}, ${numbers[1]}%, ${

@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "emitDeclarationOnly": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
@@ -9,13 +8,14 @@
     "strictNullChecks": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "target": "ESNext",
+    "target": "es2019",
     "esModuleInterop": true,
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
       "*": ["./src/*"]
-    }
+    },
+    "outDir": "dist"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
