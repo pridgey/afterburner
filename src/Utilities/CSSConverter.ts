@@ -72,46 +72,50 @@ const cssKeyToProperString = (key: string) => {
 };
 
 const checkCSSValueForVariable = (value: string) => {
-  if (!value.includes("--")) {
-    // No variable to parse
-    return value;
-  } else {
-    // Do we need to modify the value?
-    if (value.includes(",+") || value.includes(",-")) {
-      // We need to raise / drop the shade
-      const parts = value.split(",");
-      const steps = Number(parts[1]);
-
-      // Get the element defining the css vars
-      const afterburnerStyleElement = document.getElementById(
-        "afterburner_sid"
-      );
-
-      if (!afterburnerStyleElement) {
-        // Can't find that element, something went wrong.
-        return "var(--foreground)";
-      } else {
-        // Grab the value from the style element
-        const cssVarValue = getComputedStyle(
-          afterburnerStyleElement
-        ).getPropertyValue(parts[0]);
-
-        console.log("var val:", cssVarValue);
-
-        // This should be HSL, because all our CSS colors are
-        const numbers = cssVarValue
-          .split("(")[1]
-          .replace(")", "")
-          .replace(/%/g, "")
-          .split(",");
-
-        return `hsl(${numbers[0]}, ${numbers[1]}%, ${
-          Number(numbers[2]) + steps * 5
-        }%)`;
-      }
+  if (typeof value === "string") {
+    if (!value.includes("--")) {
+      // No variable to parse
+      return value;
     } else {
-      // No shade stepping, just simple variable
-      return `var(${value})`;
+      // Do we need to modify the value?
+      if (value.includes(",+") || value.includes(",-")) {
+        // We need to raise / drop the shade
+        const parts = value.split(",");
+        const steps = Number(parts[1]);
+
+        // Get the element defining the css vars
+        const afterburnerStyleElement = document.getElementById(
+          "afterburner_sid"
+        );
+
+        if (!afterburnerStyleElement) {
+          // Can't find that element, something went wrong.
+          return "var(--foreground)";
+        } else {
+          // Grab the value from the style element
+          const cssVarValue = getComputedStyle(
+            afterburnerStyleElement
+          ).getPropertyValue(parts[0]);
+
+          console.log("var val:", cssVarValue);
+
+          // This should be HSL, because all our CSS colors are
+          const numbers = cssVarValue
+            .split("(")[1]
+            .replace(")", "")
+            .replace(/%/g, "")
+            .split(",");
+
+          return `hsl(${numbers[0]}, ${numbers[1]}%, ${
+            Number(numbers[2]) + steps * 5
+          }%)`;
+        }
+      } else {
+        // No shade stepping, just simple variable
+        return `var(${value})`;
+      }
     }
+  } else {
+    return value;
   }
 };
